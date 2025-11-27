@@ -1,0 +1,432 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEditor;
+using UnityEngine;
+
+public class OnlyUsEvents : MonoBehaviour, IEventsMapper
+{
+    public const float firstCheckPointFinished = 105f;
+    public const float secondCheckPointStart = 115f;
+    public const float secondCheckPointFinished = 188f;
+    public const float thirdCheckPointStart = 198f;
+    public const float thirdCheckPointFinished = 262f;
+
+    List<float> IEventsMapper.GetCheckPoints()
+    {
+        List<float> checkPoints = new List<float>();
+
+        checkPoints.Add(firstCheckPointFinished);
+        checkPoints.Add(secondCheckPointFinished);
+        checkPoints.Add(thirdCheckPointFinished);
+
+        return checkPoints;
+    }
+
+    List<int> IEventsMapper.GetCheckScores()
+    {
+        List<int> scores = new List<int>();
+        scores.Add(1500);
+        scores.Add(3000);
+        scores.Add(4000);
+
+        return scores;
+    }
+
+    SongTitle IEventsMapper.GetSongTitle()
+    {
+        return SongTitle.OnlyUs;
+    }
+
+    void IEventsMapper.SetScoreSystem()
+    {
+        if (THISHUB.saveData.Data_Game == null || THISHUB.saveData.Data_Game.fragments.Count == 0)
+        {
+            THISHUB.saveData.Data_Game = THISHUB.Instance.MapBaseSaveData();
+        }
+
+        int highScore = THISHUB.saveData.Data_Game.fragments[THISHUB.Instance.MapSongTitleToIndex(SongTitle.OnlyUs)].stageDatas[0].highScore;
+        Static_Tile.SetInitialHighScore(highScore);
+    }
+
+    List<EventData> IEventsMapper.GetEventDatas()
+    { 
+        List<EventData> eventDatas = new List<EventData>();
+
+        eventDatas.Add(MapEventData(TileType.Held, 2f, .5f));
+        eventDatas.Add(MapEventData(TileType.Pressed, 2.5f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 2.8f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 3.2f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 3.6f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 4f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 4.4f, 0));
+        eventDatas.Add(MapEventData(TileType.Held, 4.8f, .5f));
+        eventDatas.Add(MapEventData(TileType.Pressed, 5.2f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 5.6f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 6f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 6.4f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 6.8f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 7.2f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 7.5f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 7.8f, 0));
+        eventDatas.Add(MapEventData(TileType.Held, 8f, .5f));
+        eventDatas.Add(MapEventData(TileType.Pressed, 8.5f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 8.8f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 9.2f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 9.6f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 10f, 0));
+        eventDatas.Add(MapEventData(TileType.Held, 10.8f, .5f));
+        eventDatas.Add(MapEventData(TileType.Pressed, 11.2f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 11.6f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 12f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 12.4f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 12.8f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 13.2f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 13.8f, 0));
+        eventDatas.Add(MapEventData(TileType.Held, 14f, .5f));
+        eventDatas.Add(MapEventData(TileType.Pressed, 14.4f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 15f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 15.5f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 16f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 16.6f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 17.2f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 17.6f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 18f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 18.4f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 18.8f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 19.2f, 0));
+        eventDatas.Add(MapEventData(TileType.Held, 20f, .8f));
+        eventDatas.Add(MapEventData(TileType.Pressed, 21.1f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 21.5f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 22.0f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 22.5f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 23.3f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 23.9f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 24.6f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 25.0f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 25.6f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 26.2f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 26.9f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 27.4f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 28.0f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 28.7f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 29.2f, 0));
+        eventDatas.Add(MapEventData(TileType.Held, 30f, 1f));
+        eventDatas.Add(MapEventData(TileType.Pressed, 31.0f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 31.6f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 32.2f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 32.9f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 33.5f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 34.1f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 34.7f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 35.3f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 36.0f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 36.6f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 37.2f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 37.9f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 38.6f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 39.2f, 0));
+        eventDatas.Add(MapEventData(TileType.Held, 40f, 1f));
+        eventDatas.Add(MapEventData(TileType.Pressed, 41.0f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 41.6f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 42.2f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 42.8f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 43.4f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 44.1f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 44.7f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 45.3f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 45.9f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 46.6f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 47.2f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 47.8f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 48.5f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 49.1f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 49.7f, 0));
+        eventDatas.Add(MapEventData(TileType.Held, 50f, 1f));
+        eventDatas.Add(MapEventData(TileType.Pressed, 51.0f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 51.7f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 52.3f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 52.9f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 53.5f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 54.1f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 54.8f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 55.3f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 55.9f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 56.5f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 57.1f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 57.7f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 58.4f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 59.0f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 59.6f, 0));
+        eventDatas.Add(MapEventData(TileType.Held, 60.0f, 1f));
+        eventDatas.Add(MapEventData(TileType.Pressed, 60.4f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 61.2f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 61.8f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 62.3f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 62.8f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 63.5f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 64.0f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 64.6f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 65.3f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 65.8f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 66.5f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 67.0f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 67.6f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 68.1f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 68.8f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 69.4f, 0));
+        eventDatas.Add(MapEventData(TileType.Held, 70f, 1.2f));
+        eventDatas.Add(MapEventData(TileType.Pressed, 71.4f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 72.0f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 72.7f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 73.2f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 73.9f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 74.6f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 75.1f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 75.8f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 76.3f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 77.0f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 77.6f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 78.1f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 78.8f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 79.4f, 0));
+        eventDatas.Add(MapEventData(TileType.Held, 80f, 0.7f));
+        eventDatas.Add(MapEventData(TileType.Pressed, 81.1f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 81.7f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 82.2f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 82.9f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 83.5f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 84.1f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 84.8f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 85.3f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 86.0f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 86.5f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 87.1f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 87.8f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 88.3f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 88.9f, 0));
+        eventDatas.Add(MapEventData(TileType.Held, 90f, 1.4f));
+        eventDatas.Add(MapEventData(TileType.Pressed, 91.6f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 92.1f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 92.8f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 93.3f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 94.0f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 94.5f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 95.2f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 95.8f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 96.3f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 96.9f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 97.5f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 98.1f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 98.6f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 99.2f, 0));
+        eventDatas.Add(MapEventData(TileType.Held, 100f, 0.9f));
+        eventDatas.Add(MapEventData(TileType.Pressed, 101.2f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 101.8f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 102.5f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 103.1f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 103.7f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 104.2f, 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, 104.8f, 0));
+
+        eventDatas.Add(MapEventData(TileType.Held, (secondCheckPointStart + 0.5f), 0.8f));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 1.2f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 1.8f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 2.3f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 2.9f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 3.5f), 0));
+        eventDatas.Add(MapEventData(TileType.Held, (secondCheckPointStart + 4.0f), 1.0f));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 5.1f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 5.7f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 6.3f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 6.9f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 7.4f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 8.0f), 0));
+        eventDatas.Add(MapEventData(TileType.Held, (secondCheckPointStart + 8.6f), 1.2f));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 9.9f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 10.4f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 11.0f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 11.6f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 12.2f), 0));
+        eventDatas.Add(MapEventData(TileType.Held, (secondCheckPointStart + 13.0f), 1.0f));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 14.1f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 14.6f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 15.2f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 15.8f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 16.4f), 0));
+        eventDatas.Add(MapEventData(TileType.Held, (secondCheckPointStart + 17.0f), 1.1f));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 18.2f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 18.8f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 19.4f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 20.0f), 0));
+        eventDatas.Add(MapEventData(TileType.Held, (secondCheckPointStart + 20.6f), 0.9f));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 21.6f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 22.2f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 22.8f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 23.4f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 24.0f), 0));
+        eventDatas.Add(MapEventData(TileType.Held, (secondCheckPointStart + 24.6f), 1.3f));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 26.0f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 26.6f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 27.2f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 27.8f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 28.4f), 0));
+        eventDatas.Add(MapEventData(TileType.Held, (secondCheckPointStart + 29.0f), 1.0f));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 30.2f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 30.8f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 31.4f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 32.0f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 32.6f), 0));
+        eventDatas.Add(MapEventData(TileType.Held, (secondCheckPointStart + 33.2f), 1.1f));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 34.4f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 35.0f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 35.6f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 36.2f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 36.8f), 0));
+        eventDatas.Add(MapEventData(TileType.Held, (secondCheckPointStart + 37.4f), 1.2f));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 38.8f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 39.4f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 40.0f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 40.6f), 0));
+        eventDatas.Add(MapEventData(TileType.Held, (secondCheckPointStart + 41.2f), 1.0f));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 42.3f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 42.9f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 43.5f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 44.1f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 44.7f), 0));
+        eventDatas.Add(MapEventData(TileType.Held, (secondCheckPointStart + 45.3f), 1.3f));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 46.6f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 47.2f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 47.8f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 48.4f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 49.0f), 0));
+        eventDatas.Add(MapEventData(TileType.Held, (secondCheckPointStart + 49.6f), 1.1f));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 50.8f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 51.4f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 52.0f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 52.6f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 53.2f), 0));
+        eventDatas.Add(MapEventData(TileType.Held, (secondCheckPointStart + 53.8f), 1.2f));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 55.0f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 55.6f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 56.2f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 56.8f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 57.4f), 0));
+        eventDatas.Add(MapEventData(TileType.Held, (secondCheckPointStart + 58.0f), 1.0f));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 59.1f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 59.7f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 60.3f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 60.9f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 61.5f), 0));
+        eventDatas.Add(MapEventData(TileType.Held, (secondCheckPointStart + 62.1f), 1.3f));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 63.5f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 64.1f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 64.7f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 65.3f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 65.9f), 0));
+        eventDatas.Add(MapEventData(TileType.Held, (secondCheckPointStart + 66.5f), 1.2f));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 67.8f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 68.4f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 69.0f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (secondCheckPointStart + 69.6f), 0));
+        eventDatas.Add(MapEventData(TileType.Held, (secondCheckPointStart + 70f), 1f));
+
+        eventDatas.Add(MapEventData(TileType.Held, (thirdCheckPointStart + 0.5f), 0.8f));
+        eventDatas.Add(MapEventData(TileType.Pressed, (thirdCheckPointStart + 1.2f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (thirdCheckPointStart + 1.8f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (thirdCheckPointStart + 2.4f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (thirdCheckPointStart + 3.1f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (thirdCheckPointStart + 3.7f), 0));
+        eventDatas.Add(MapEventData(TileType.Held, (thirdCheckPointStart + 4.3f), 1.0f));
+        eventDatas.Add(MapEventData(TileType.Pressed, (thirdCheckPointStart + 5.5f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (thirdCheckPointStart + 6.1f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (thirdCheckPointStart + 6.7f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (thirdCheckPointStart + 7.3f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (thirdCheckPointStart + 8.0f), 0));
+        eventDatas.Add(MapEventData(TileType.Held, (thirdCheckPointStart + 8.6f), 1.2f));
+        eventDatas.Add(MapEventData(TileType.Pressed, (thirdCheckPointStart + 9.9f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (thirdCheckPointStart + 10.5f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (thirdCheckPointStart + 11.1f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (thirdCheckPointStart + 11.7f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (thirdCheckPointStart + 12.4f), 0));
+        eventDatas.Add(MapEventData(TileType.Held, (thirdCheckPointStart + 13.0f), 1.0f));
+        eventDatas.Add(MapEventData(TileType.Pressed, (thirdCheckPointStart + 14.2f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (thirdCheckPointStart + 14.8f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (thirdCheckPointStart + 15.4f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (thirdCheckPointStart + 16.0f), 0));
+        eventDatas.Add(MapEventData(TileType.Held, (thirdCheckPointStart + 16.6f), 1.4f));
+        eventDatas.Add(MapEventData(TileType.Pressed, (thirdCheckPointStart + 18.1f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (thirdCheckPointStart + 18.7f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (thirdCheckPointStart + 19.3f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (thirdCheckPointStart + 19.9f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (thirdCheckPointStart + 20.5f), 0));
+        eventDatas.Add(MapEventData(TileType.Held, (thirdCheckPointStart + 21.2f), 1.2f));
+        eventDatas.Add(MapEventData(TileType.Pressed, (thirdCheckPointStart + 22.6f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (thirdCheckPointStart + 23.2f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (thirdCheckPointStart + 23.8f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (thirdCheckPointStart + 24.4f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (thirdCheckPointStart + 25.0f), 0));
+        eventDatas.Add(MapEventData(TileType.Held, (thirdCheckPointStart + 25.6f), 1.0f));
+        eventDatas.Add(MapEventData(TileType.Pressed, (thirdCheckPointStart + 26.8f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (thirdCheckPointStart + 27.4f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (thirdCheckPointStart + 28.0f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (thirdCheckPointStart + 28.6f), 0));
+        eventDatas.Add(MapEventData(TileType.Held, (thirdCheckPointStart + 29.2f), 1.3f));
+        eventDatas.Add(MapEventData(TileType.Pressed, (thirdCheckPointStart + 30.7f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (thirdCheckPointStart + 31.3f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (thirdCheckPointStart + 31.9f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (thirdCheckPointStart + 32.5f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (thirdCheckPointStart + 33.1f), 0));
+        eventDatas.Add(MapEventData(TileType.Held, (thirdCheckPointStart + 33.8f), 1.0f));
+        eventDatas.Add(MapEventData(TileType.Pressed, (thirdCheckPointStart + 35.0f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (thirdCheckPointStart + 35.6f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (thirdCheckPointStart + 36.2f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (thirdCheckPointStart + 36.8f), 0));
+        eventDatas.Add(MapEventData(TileType.Held, (thirdCheckPointStart + 37.4f), 1.2f));
+        eventDatas.Add(MapEventData(TileType.Pressed, (thirdCheckPointStart + 38.8f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (thirdCheckPointStart + 39.4f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (thirdCheckPointStart + 40.0f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (thirdCheckPointStart + 40.6f), 0));
+        eventDatas.Add(MapEventData(TileType.Held, (thirdCheckPointStart + 41.2f), 1.4f));
+        eventDatas.Add(MapEventData(TileType.Pressed, (thirdCheckPointStart + 42.7f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (thirdCheckPointStart + 43.3f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (thirdCheckPointStart + 43.9f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (thirdCheckPointStart + 44.5f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (thirdCheckPointStart + 45.1f), 0));
+        eventDatas.Add(MapEventData(TileType.Held, (thirdCheckPointStart + 45.7f), 1.0f));
+        eventDatas.Add(MapEventData(TileType.Pressed, (thirdCheckPointStart + 46.9f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (thirdCheckPointStart + 47.5f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (thirdCheckPointStart + 48.1f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (thirdCheckPointStart + 48.7f), 0));
+        eventDatas.Add(MapEventData(TileType.Held, (thirdCheckPointStart + 49.3f), 1.2f));
+        eventDatas.Add(MapEventData(TileType.Pressed, (thirdCheckPointStart + 50.7f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (thirdCheckPointStart + 51.3f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (thirdCheckPointStart + 51.9f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (thirdCheckPointStart + 52.5f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (thirdCheckPointStart + 53.1f), 0));
+        eventDatas.Add(MapEventData(TileType.Held, (thirdCheckPointStart + 53.8f), 1.1f));
+        eventDatas.Add(MapEventData(TileType.Pressed, (thirdCheckPointStart + 55.0f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (thirdCheckPointStart + 55.6f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (thirdCheckPointStart + 56.2f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (thirdCheckPointStart + 56.8f), 0));
+        eventDatas.Add(MapEventData(TileType.Held, (thirdCheckPointStart + 57.4f), 1.3f));
+        eventDatas.Add(MapEventData(TileType.Pressed, (thirdCheckPointStart + 58.9f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (thirdCheckPointStart + 59.5f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (thirdCheckPointStart + 60.1f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (thirdCheckPointStart + 60.7f), 0));
+        eventDatas.Add(MapEventData(TileType.Pressed, (thirdCheckPointStart + 61.3f), 0));
+
+
+
+        return eventDatas;
+    }
+
+    public EventData MapEventData(TileType tileType, float timetoSpawn, float holdDuration)
+    {
+        EventData eventData = new EventData();
+        eventData.tileType = tileType;
+        eventData.timetoSpawn = timetoSpawn;
+        eventData.holdDuration = holdDuration;
+
+        return eventData;
+    }
+}
